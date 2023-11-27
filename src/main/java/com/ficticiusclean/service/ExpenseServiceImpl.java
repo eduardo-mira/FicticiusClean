@@ -9,10 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
 @Service
 public class ExpenseServiceImpl implements ExpenseService {
@@ -66,9 +63,12 @@ public class ExpenseServiceImpl implements ExpenseService {
     }
 
     public void validateParams(ExpenseParametersInfo expenseParamInfo) {
-        Assert.notNull(expenseParamInfo.fuelPrice, "As informações do consumo não podem ser nulas");
-        Assert.notNull(expenseParamInfo.totalCityDistance, "As informações do consumo não podem ser nulas");
-        Assert.notNull(expenseParamInfo.totalRoadDistance, "As informações do consumo não podem ser nulas");
+        Assert.notNull(expenseParamInfo.fuelPrice, "Campo [fuelPrice] não pode ser nulo");
+        Assert.notEmpty(Collections.singleton(expenseParamInfo.fuelPrice), "Campo [fuelPrice] vazio");
+        Assert.notNull(expenseParamInfo.totalCityDistance, "Campo [totalCityDistance] não pode ser nulo");
+        Assert.notEmpty(Collections.singleton(expenseParamInfo.totalCityDistance), "Campo [totalCityDistance] vazio");
+        Assert.notNull(expenseParamInfo.totalRoadDistance, "Campo [totalRoadDistance] não pode ser nulo");
+        Assert.notEmpty(Collections.singleton(expenseParamInfo.totalRoadDistance), "Campo [totalRoadDistance] vazio");
     }
 
 }

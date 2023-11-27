@@ -51,11 +51,11 @@ class ExpenseSericeTests {
     @Test
     void getLessExpensive() {
         doReturn(VehiclesData.getVehiclesList()).when(vehicleRepository).findAll();
-        ExpenseInfo lessExpensiveVehicle = expenseService.getLessExpensiveVehicle(ExpensesParamsData.getDefaultExpenseParam());
-        assertEquals(lessExpensiveVehicle.name, "Uno");
-        assertEquals(lessExpensiveVehicle.yearModel, 2010);
-        assertEquals(lessExpensiveVehicle.totalFuelQuantity, new BigDecimal("7.69"));
-        assertEquals(lessExpensiveVehicle.totalFuelExpense, new BigDecimal("40.37"));
+        List<ExpenseInfo> lessExpensiveVehicleList = expenseService.getLessExpensiveVehicle(ExpensesParamsData.getDefaultExpenseParam());
+        assertEquals(lessExpensiveVehicleList.get(0).name, "Uno");
+        assertEquals(lessExpensiveVehicleList.get(0).yearModel, 2010);
+        assertEquals(lessExpensiveVehicleList.get(0).totalFuelQuantity, new BigDecimal("7.69"));
+        assertEquals(lessExpensiveVehicleList.get(0).totalFuelExpense, new BigDecimal("40.37"));
     }
 
     @Test

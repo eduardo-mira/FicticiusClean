@@ -4,6 +4,8 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -24,38 +26,44 @@ public class VehicleInfo {
 
     @Schema(name = "name",
             description = "Nome",
-            example = "Civic",
-            required = true)
+            example = "Civic")
+    @NotNull(message = "Campo [name] não pode ser nulo")
+    @NotEmpty(message = "Campo [name] não pode ser vazio")
     public String name;
 
     @Schema(name = "brand",
             description = "Marca",
-            example = "Honda",
-            required = true)
+            example = "Honda")
+    @NotNull(message = "Campo [brand] não pode ser nulo")
+    @NotEmpty(message = "Campo [brand] não pode ser vazio")
     public String brand;
 
     @Schema(name = "model",
             description = "Modelo",
-            example = "Honda Civic LXR",
-            required = true)
+            example = "Honda Civic LXR")
+    @NotNull(message = "Campo [model] não pode ser nulo")
+    @NotEmpty(message = "Campo [model] não pode ser vazio")
     public String model;
 
     @Schema(name = "fabricationDate",
             description = "Data de fabricação",
-            example = "2016-02-03",
-            required = true)
+            example = "2016-02-03")
+    @NotNull(message = "Campo [fabricationDate] não pode ser nulo")
+    @NotEmpty(message = "Campo [fabricationDate] não pode ser vazio")
     public LocalDate fabricationDate;
 
     @Schema(name = "cityConsumption",
             description = "Consumo Médio de combustível dentro de cidade (KM/L)",
-            example = "12.2",
-            required = true)
+            example = "12.2")
+    @NotNull(message = "Campo [cityConsumption] não pode ser nulo")
+    @NotEmpty(message = "Campo [cityConsumption] não pode ser vazio")
     public BigDecimal cityConsumption;
 
     @Schema(name = "roadConsumption",
             description = "Consumo Médio de combustível em rodovias (KM/L)",
-            example = "12.6",
-            required = true)
+            example = "12.6")
+    @NotNull(message = "Campo [roadConsumption] não pode ser nulo")
+    @NotEmpty(message = "Campo [roadConsumption] não pode ser vazio")
     public BigDecimal roadConsumption;
 
     public void setId(Long id) {
