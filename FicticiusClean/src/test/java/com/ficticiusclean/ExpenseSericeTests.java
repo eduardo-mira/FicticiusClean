@@ -4,9 +4,7 @@ import com.ficticiusclean.data.ExpensesParamsData;
 import com.ficticiusclean.data.VehiclesData;
 import com.ficticiusclean.entity.ExpenseInfo;
 import com.ficticiusclean.entity.ExpenseParametersInfo;
-import com.ficticiusclean.entity.VehicleInfo;
 import com.ficticiusclean.repository.VehicleRepository;
-import com.ficticiusclean.service.ExpenseService;
 import com.ficticiusclean.service.ExpenseServiceImpl;
 import com.ficticiusclean.service.VehicleServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
@@ -17,7 +15,6 @@ import org.mockito.MockitoAnnotations;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

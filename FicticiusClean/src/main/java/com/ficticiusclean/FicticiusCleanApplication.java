@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class FicticiusCleanApplication {
+public class FicticiuscleanApplication {
 
-    public static void main(String[] args) {
-        SpringApplication.run(FicticiusCleanApplication.class, args);
-    }
+	public static void main(String[] args) {
+		SpringApplication.run(FicticiuscleanApplication.class, args);
+	}
 
 }

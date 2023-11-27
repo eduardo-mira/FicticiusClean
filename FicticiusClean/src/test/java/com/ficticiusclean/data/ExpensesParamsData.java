@@ -1,6 +1,5 @@
 package com.ficticiusclean.data;
 
-import com.ficticiusclean.entity.ExpenseInfo;
 import com.ficticiusclean.entity.ExpenseParametersInfo;
 
 import java.math.BigDecimal;
