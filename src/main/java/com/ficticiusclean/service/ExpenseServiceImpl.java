@@ -15,11 +15,11 @@ import java.util.Comparator;
 import java.util.List;
 
 @Service
-public class ExpensesServiceImpl implements ExpenseService {
+public class ExpenseServiceImpl implements ExpenseService {
 
     private final VehicleRepository vehicleRepository;
 
-    public ExpensesServiceImpl(VehicleRepository vehicleRepository) {
+    public ExpenseServiceImpl(VehicleRepository vehicleRepository) {
         this.vehicleRepository = vehicleRepository;
     }
 
