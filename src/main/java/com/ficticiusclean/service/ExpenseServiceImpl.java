@@ -30,15 +30,17 @@ public class ExpenseServiceImpl implements ExpenseService {
     }
 
     @Override
-    public ExpenseInfo getLessExpensiveVehicle(ExpenseParametersInfo expenseParamInfo) {
+    public List<ExpenseInfo> getLessExpensiveVehicle(ExpenseParametersInfo expenseParamInfo) {
         List<ExpenseInfo> expenseInfoList = getExpenseInfoList(expenseParamInfo);
-        return expenseInfoList.stream().sorted().toList().get(0);
+        ExpenseInfo lessExpensive = expenseInfoList.stream().sorted().toList().get(0);
+        return expenseInfoList.stream().filter(info -> info.totalFuelExpense.equals(lessExpensive.totalFuelExpense)).toList();
     }
 
-    public ExpenseInfo getMostExpensiveVehicle(ExpenseParametersInfo expenseParamInfo) {
+    public List<ExpenseInfo> getMostExpensiveVehicle(ExpenseParametersInfo expenseParamInfo) {
         List<ExpenseInfo> expenseInfoList = getExpenseInfoList(expenseParamInfo);
         Collections.sort(expenseInfoList, Comparator.comparing(ExpenseInfo::getTotalFuelExpense));
-        return expenseInfoList.get(0);
+        ExpenseInfo mostExpensive = expenseInfoList.stream().sorted().toList().get(0);
+        return expenseInfoList.stream().filter(info -> info.totalFuelExpense.equals(mostExpensive.totalFuelExpense)).toList();
     }
 
     private List<ExpenseInfo> getExpenseInfoList(ExpenseParametersInfo expenseParamInfo) {
