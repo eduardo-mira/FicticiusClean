@@ -43,8 +43,10 @@ java -jar ficticiusclean-1.0.0.jar --server.port=8083
 
 ## Documentação Swagger
 
-Para visualizar a documentação Swagger da API , acessar no navegador, a URL http://localhost:8080/swagger-ui/index.html
-
+Para visualizar a documentação Swagger da API , acessar no navegador, a URL:
+```
+http://localhost:8080/swagger-ui/index.html
+```
 **Lembrando de ajustar a porta caso alterado no passo anterior.**
 
 ## Banco de Dados
