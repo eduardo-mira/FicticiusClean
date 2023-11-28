@@ -23,6 +23,12 @@ mvn clean package
 ```
 mvnw clean package
 ```
+Para gerar o pacote do projeto sem a necessidade de rodar os testes unitários,
+deve-se adicionar o parâmetro no final da linha: **-DskipTests**. Ex:
+```
+mvn clean package -DskipTests
+```
+
 O JAR será criado na pasta /target, dentro do diretório do projeto. Acessá-la e executar a aplicação via linha de comando:
 ```
 java -jar ficticiusclean-1.0.0.jar
@@ -30,9 +36,16 @@ java -jar ficticiusclean-1.0.0.jar
 A aplicação será iniciada utilizando a porta 8080 no endereço:
 http://localhost:8080/
 
+Caso deseje iniciar a aplicação em outra porta, no exemplo abaixo a porta 8083, o comando deverá ser:
+```
+java -jar ficticiusclean-1.0.0.jar --server.port=8083
+```
+
 ## Documentação Swagger
 
 Para visualizar a documentação Swagger da API , acessar no navegador, a URL http://localhost:8080/swagger-ui/index.html
+
+**Lembrando de ajustar a porta caso alterado no passo anterior.**
 
 ## Banco de Dados
 
