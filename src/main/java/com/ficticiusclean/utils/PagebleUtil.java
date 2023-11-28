@@ -8,7 +8,7 @@ import java.util.List;
 public class PagebleUtil {
 
     public static List<?> pagebleList(List<?> pagebleList, int page, int pageSize) {
-        if (page >= 0 && pageSize >= 0) {
+        if (page >= 0 && pageSize > 0) {
             Pageable pageRequest = createPageRequestUsing(page, pageSize);
             int start = (int) pageRequest.getOffset();
             int end = Math.min((start + pageRequest.getPageSize()), pagebleList.size());

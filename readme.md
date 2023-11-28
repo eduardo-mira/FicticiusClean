@@ -12,10 +12,17 @@ git clone https://github.com/eduardo-mira/FicticiusClean.git
 ## Executar
 
 Gerar o executável (JAR):
+
+Acessar diretório onde se encontro o arquivo pom.xml e executar o comando abaixo:
+
+- Caso possua o maven instalado em sua máquina:
 ```
 mvn clean package
 ```
-
+- Usar o maven junto ao projeto:
+```
+mvnw clean package
+```
 O JAR será criado na pasta /target, dentro do diretório do projeto. Acessá-la e executar a aplicação via linha de comando:
 ```
 java -jar ficticiusclean-1.0.0.jar
