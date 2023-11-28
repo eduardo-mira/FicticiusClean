@@ -29,24 +29,28 @@ public class ExpenseServiceImpl implements ExpenseService {
         List<ExpenseInfo> expenseInfoList = getExpenseInfoList(expenseParamInfo);
 
         if (page >= 0 && pageSize >= 0) {
-            return (List<ExpenseInfo>) PagebleUtil.pagebleList(expenseInfoList, page, pageSize);
+            expenseInfoList = (List<ExpenseInfo>) PagebleUtil.pagebleList(expenseInfoList, page, pageSize);
         }
 
-        return expenseInfoList.stream().sorted().toList();
+        return expenseInfoList;
     }
 
     @Override
-    public List<ExpenseInfo> getLessExpensiveVehicle(ExpenseParametersInfo expenseParamInfo) {
+    public List<ExpenseInfo> getLessExpensiveFuelVehicle(ExpenseParametersInfo expenseParamInfo) {
         List<ExpenseInfo> expenseInfoList = getExpenseInfoList(expenseParamInfo);
         ExpenseInfo lessExpensive = expenseInfoList.stream().sorted().toList().get(0);
-        return expenseInfoList.stream().filter(info -> info.totalFuelExpense.equals(lessExpensive.totalFuelExpense)).toList();
+        expenseInfoList = expenseInfoList.stream().filter(info -> info.totalFuelExpense.equals(lessExpensive.totalFuelExpense)).toList();
+        return expenseInfoList;
     }
 
-    public List<ExpenseInfo> getMostExpensiveVehicle(ExpenseParametersInfo expenseParamInfo) {
+    public List<ExpenseInfo> getMostExpensiveFuelVehicle(ExpenseParametersInfo expenseParamInfo) {
         List<ExpenseInfo> expenseInfoList = getExpenseInfoList(expenseParamInfo);
-        Collections.sort(expenseInfoList, Comparator.comparing(ExpenseInfo::getTotalFuelExpense));
-        ExpenseInfo mostExpensive = expenseInfoList.stream().sorted().toList().get(0);
-        return expenseInfoList.stream().filter(info -> info.totalFuelExpense.equals(mostExpensive.totalFuelExpense)).toList();
+        List<ExpenseInfo> expenseInfoListTmp = new ArrayList<>();
+        expenseInfoListTmp.addAll(expenseInfoList);
+        Collections.reverse(expenseInfoListTmp);
+        ExpenseInfo mostExpensive = expenseInfoListTmp.get(0);
+        expenseInfoList = expenseInfoListTmp.stream().filter(info -> info.totalFuelExpense.equals(mostExpensive.totalFuelExpense)).toList();
+        return expenseInfoList;
     }
 
     private List<ExpenseInfo> getExpenseInfoList(ExpenseParametersInfo expenseParamInfo) {
@@ -68,7 +72,7 @@ public class ExpenseServiceImpl implements ExpenseService {
             expenseInfoList.add(expenseInfo);
         }
 
-        return expenseInfoList;
+        return expenseInfoList.stream().sorted().toList();
     }
 
     public void validateParams(ExpenseParametersInfo expenseParamInfo) {

@@ -58,9 +58,20 @@ public class VehiclesData {
         vehicleInfo.brand = "Chevrolet";
         vehicleInfo.model = "Corvette Z06";
         vehicleInfo.fabricationDate = LocalDate.of(2018,2,2);
-        vehicleInfo.cityConsumption = new BigDecimal("9.2");
-        vehicleInfo.roadConsumption = new BigDecimal("16.1");
+        vehicleInfo.cityConsumption = new BigDecimal("5.2");
+        vehicleInfo.roadConsumption = new BigDecimal("10.1");
         vehiclesList.add(vehicleInfo);
         return vehiclesList;
+    }
+
+    public static VehicleInfo getVehicleInfo() {
+        VehicleInfo vehicleInfo = new VehicleInfo();
+        vehicleInfo.name = "Civic";
+        vehicleInfo.brand = "Honda";
+        vehicleInfo.model = "Civic LXR";
+        vehicleInfo.fabricationDate = LocalDate.of(2016,4,5);
+        vehicleInfo.roadConsumption = new BigDecimal("16.4");
+        vehicleInfo.cityConsumption = new BigDecimal("10");
+        return vehicleInfo;
     }
 }

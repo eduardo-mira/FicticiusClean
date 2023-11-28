@@ -51,7 +51,7 @@ class ExpenseSericeTests {
     @Test
     void getLessExpensive() {
         doReturn(VehiclesData.getVehiclesList()).when(vehicleRepository).findAll();
-        List<ExpenseInfo> lessExpensiveVehicleList = expenseService.getLessExpensiveVehicle(ExpensesParamsData.getDefaultExpenseParam());
+        List<ExpenseInfo> lessExpensiveVehicleList = expenseService.getLessExpensiveFuelVehicle(ExpensesParamsData.getDefaultExpenseParam());
         assertEquals(lessExpensiveVehicleList.get(0).name, "Uno");
         assertEquals(lessExpensiveVehicleList.get(0).yearModel, 2010);
         assertEquals(lessExpensiveVehicleList.get(0).totalFuelQuantity, new BigDecimal("7.69"));
@@ -61,7 +61,7 @@ class ExpenseSericeTests {
     @Test
     void getMostExpensive() {
         doReturn(VehiclesData.getVehiclesListV8()).when(vehicleRepository).findAll();
-        List<ExpenseInfo> expenseInfoList = expenseService.analizeExpenses(ExpensesParamsData.getDefaultExpenseParam(),0,0);
+        List<ExpenseInfo> expenseInfoList = expenseService.getMostExpensiveFuelVehicle(ExpensesParamsData.getDefaultExpenseParam());
         assertEquals(expenseInfoList.get(expenseInfoList.size()-1).name, "Corvette");
     }
 
@@ -70,6 +70,6 @@ class ExpenseSericeTests {
         doReturn(VehiclesData.getVehiclesList()).when(vehicleRepository).findAll();
         ExpenseParametersInfo expenseParametersInfo = ExpensesParamsData.getDefaultExpenseParam();
         expenseParametersInfo.fuelPrice = null;
-        assertThrows(IllegalArgumentException.class, () -> expenseService.getLessExpensiveVehicle(expenseParametersInfo));
+        assertThrows(IllegalArgumentException.class, () -> expenseService.getLessExpensiveFuelVehicle(expenseParametersInfo));
     }
 }

@@ -9,7 +9,7 @@ public interface ExpenseService {
 
     List<ExpenseInfo> analizeExpenses(ExpenseParametersInfo expenseParamInfo, int page, int pageSize);
 
-    List<ExpenseInfo> getLessExpensiveVehicle(ExpenseParametersInfo expenseParamInfo);
+    List<ExpenseInfo> getLessExpensiveFuelVehicle(ExpenseParametersInfo expenseParamInfo);
 
-    List<ExpenseInfo> getMostExpensiveVehicle(ExpenseParametersInfo expenseParamInfo);
+    List<ExpenseInfo> getMostExpensiveFuelVehicle(ExpenseParametersInfo expenseParamInfo);
 }

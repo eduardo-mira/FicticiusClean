@@ -1,6 +1,7 @@
 package com.ficticiusclean;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.ficticiusclean.data.VehiclesData;
 import com.ficticiusclean.entity.VehicleInfo;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -42,7 +43,7 @@ public class VehicleApiTests {
     void addNewVehicleTest() throws Exception {
         mockMvc.perform(post("/api/vehicle/add")
                         .contentType(MediaType.APPLICATION_JSON)
-                        .content(mapper.writeValueAsString(vehicleInfo())))
+                        .content(mapper.writeValueAsString(VehiclesData.getVehicleInfo())))
                 .andExpect(status().isCreated())
                 .andExpect(jsonPath("$.brand").value("Honda"))
                 .andExpect(jsonPath("$.name").value("Civic"))
@@ -82,16 +83,5 @@ public class VehicleApiTests {
         mockMvc.perform(get("/api/vehicle/getAllVehicle")
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isNotFound());
-    }
-
-    private VehicleInfo vehicleInfo() {
-        VehicleInfo vehicleInfo = new VehicleInfo();
-        vehicleInfo.name = "Civic";
-        vehicleInfo.brand = "Honda";
-        vehicleInfo.model = "Civic LXR";
-        vehicleInfo.fabricationDate = LocalDate.of(2016,4,5);
-        vehicleInfo.roadConsumption = new BigDecimal("16.4");
-        vehicleInfo.cityConsumption = new BigDecimal("10");
-        return vehicleInfo;
     }
 }

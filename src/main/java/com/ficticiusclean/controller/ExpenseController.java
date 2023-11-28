@@ -27,13 +27,13 @@ public class ExpenseController {
     @Operation(summary = "Menor custo de combustível", description = "Retorna as informações do veículo com menor gasto de combustível")
     @GetMapping(value ="/lessExpensive")
     List<ExpenseInfo> lessExpensive(@RequestBody ExpenseParametersInfo expenseParamInfo) {
-        return expenseService.getLessExpensiveVehicle(expenseParamInfo);
+        return expenseService.getLessExpensiveFuelVehicle(expenseParamInfo);
     }
 
     @Operation(summary = "Maior custo de combustível", description = "Retorna as informações do veículo com maior gasto de combustível")
     @GetMapping(value ="/mostExpensive")
     List<ExpenseInfo> mostExpensive(@RequestBody ExpenseParametersInfo expenseParamInfo) {
-        return expenseService.getMostExpensiveVehicle(expenseParamInfo);
+        return expenseService.getMostExpensiveFuelVehicle(expenseParamInfo);
     }
 
 
