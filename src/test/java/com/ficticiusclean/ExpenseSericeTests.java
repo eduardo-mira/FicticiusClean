@@ -44,7 +44,7 @@ class ExpenseSericeTests {
     @Test
     void listVehicles() {
         doReturn(VehiclesData.getVehiclesList()).when(vehicleRepository).findAll();
-        List<ExpenseInfo> expenseInfoList = expenseService.analizeExpenses(ExpensesParamsData.getDefaultExpenseParam());
+        List<ExpenseInfo> expenseInfoList = expenseService.analizeExpenses(ExpensesParamsData.getDefaultExpenseParam(),0,0);
         assertEquals(expenseInfoList.size(), 4);
     }
 
@@ -61,7 +61,7 @@ class ExpenseSericeTests {
     @Test
     void getMostExpensive() {
         doReturn(VehiclesData.getVehiclesListV8()).when(vehicleRepository).findAll();
-        List<ExpenseInfo> expenseInfoList = expenseService.analizeExpenses(ExpensesParamsData.getDefaultExpenseParam());
+        List<ExpenseInfo> expenseInfoList = expenseService.analizeExpenses(ExpensesParamsData.getDefaultExpenseParam(),0,0);
         assertEquals(expenseInfoList.get(expenseInfoList.size()-1).name, "Corvette");
     }
 

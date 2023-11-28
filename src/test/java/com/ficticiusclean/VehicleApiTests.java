@@ -8,15 +8,18 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.web.JsonPath;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
+import static org.hamcrest.Matchers.hasSize;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
@@ -62,6 +65,15 @@ public class VehicleApiTests {
                 .andExpect(jsonPath("$[0].fabricationDate").value("2016-04-05"))
                 .andExpect(jsonPath("$[0].cityConsumption").value("10.0"))
                 .andExpect(jsonPath("$[0].roadConsumption").value("16.4"));
+    }
+
+    @DisplayName("Buscar a lista de veiculos paginadas pagina 0, 2 itens por pagina e retornar OK - 200")
+    @Test
+    void getAllVehiclesPaginatedTest() throws Exception {
+        mockMvc.perform(get("/api/vehicle/getAll?page0&pageSize=2")
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.*", hasSize(2)));
     }
 
     @DisplayName("Chamando api não implementada - 404")
