@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface VehicleService {
 
-    List<VehicleInfo> getAll();
+    List<VehicleInfo> getAll(int page, int pageSize);
 
     VehicleInfo saveVehicle(VehicleInfo vehicleInfo);
 }

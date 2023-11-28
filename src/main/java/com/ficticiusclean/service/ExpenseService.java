@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface ExpenseService {
 
-    List<ExpenseInfo> analizeExpenses(ExpenseParametersInfo expenseParamInfo);
+    List<ExpenseInfo> analizeExpenses(ExpenseParametersInfo expenseParamInfo, int page, int pageSize);
 
     List<ExpenseInfo> getLessExpensiveVehicle(ExpenseParametersInfo expenseParamInfo);
 

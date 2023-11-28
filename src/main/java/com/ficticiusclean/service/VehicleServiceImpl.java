@@ -2,6 +2,9 @@ package com.ficticiusclean.service;
 
 import com.ficticiusclean.entity.VehicleInfo;
 import com.ficticiusclean.repository.VehicleRepository;
+import com.ficticiusclean.utils.PagebleUtil;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
@@ -19,7 +22,11 @@ public class VehicleServiceImpl implements VehicleService {
     }
 
     @Override
-    public List<VehicleInfo> getAll() {
+    public List<VehicleInfo> getAll(int page, int pageSize) {
+        List<VehicleInfo> vehicleInfoList = vehicleRepository.findAll();
+        if (page >= 0 && pageSize > 0) {
+            return (List<VehicleInfo>) PagebleUtil.pagebleList(vehicleInfoList, page, pageSize);
+        }
         return vehicleRepository.findAll();
     }
 
@@ -38,5 +45,9 @@ public class VehicleServiceImpl implements VehicleService {
         Assert.notNull(vehicleInfo.fabricationDate, "Campo [fabricationDate] não informado");
         Assert.notNull(vehicleInfo.roadConsumption, "Campo [roadConsumption] não informado");
         Assert.notNull(vehicleInfo.cityConsumption, "Campo [cityConsumption] não informado");
+    }
+
+    private Pageable createPageRequestUsing(int page, int size) {
+        return PageRequest.of(page, size);
     }
 }

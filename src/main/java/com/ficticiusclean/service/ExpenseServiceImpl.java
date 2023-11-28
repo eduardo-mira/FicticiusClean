@@ -5,11 +5,15 @@ import com.ficticiusclean.entity.ExpenseParametersInfo;
 import com.ficticiusclean.entity.VehicleInfo;
 import com.ficticiusclean.repository.VehicleRepository;
 import com.ficticiusclean.utils.ExpensesCalc;
+import com.ficticiusclean.utils.PagebleUtil;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
 import java.math.BigDecimal;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 
 @Service
 public class ExpenseServiceImpl implements ExpenseService {
@@ -21,8 +25,13 @@ public class ExpenseServiceImpl implements ExpenseService {
     }
 
     @Override
-    public List<ExpenseInfo> analizeExpenses(ExpenseParametersInfo expenseParamInfo) {
+    public List<ExpenseInfo> analizeExpenses(ExpenseParametersInfo expenseParamInfo, int page, int pageSize) {
         List<ExpenseInfo> expenseInfoList = getExpenseInfoList(expenseParamInfo);
+
+        if (page >= 0 && pageSize >= 0) {
+            return (List<ExpenseInfo>) PagebleUtil.pagebleList(expenseInfoList, page, pageSize);
+        }
+
         return expenseInfoList.stream().sorted().toList();
     }
 

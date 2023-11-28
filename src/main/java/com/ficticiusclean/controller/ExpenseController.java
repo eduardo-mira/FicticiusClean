@@ -5,10 +5,7 @@ import com.ficticiusclean.entity.ExpenseParametersInfo;
 import com.ficticiusclean.service.ExpenseService;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -21,8 +18,10 @@ public class ExpenseController {
 
     @Operation(summary = "Informações de consumo dos veículos", description = "Retorna todas as informações de consumo dos veículos cadastrados")
     @GetMapping(value ="/analisys")
-    List<ExpenseInfo> expenseAnalisys(@RequestBody ExpenseParametersInfo expenseParamInfo) {
-        return expenseService.analizeExpenses(expenseParamInfo);
+    List<ExpenseInfo> expenseAnalisys(@RequestBody ExpenseParametersInfo expenseParamInfo,
+                                      @RequestParam(value = "page", defaultValue = "0" , required = false) String page,
+                                      @RequestParam(value = "pageSize", defaultValue =  "0", required = false) String pageSize) {
+        return expenseService.analizeExpenses(expenseParamInfo, Integer.parseInt(page), Integer.parseInt(pageSize));
     }
 
     @Operation(summary = "Menor custo de combustível", description = "Retorna as informações do veículo com menor gasto de combustível")

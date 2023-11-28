@@ -35,7 +35,7 @@ class VehicleSericeTests {
     @Test
     void listVehicles() {
         doReturn(VehiclesData.getVehiclesList()).when(vehicleRepository).findAll();
-        List<VehicleInfo> vehicleInfoList = vehicleService.getAll();
+        List<VehicleInfo> vehicleInfoList = vehicleService.getAll(-1,-1);
         assertEquals(vehicleInfoList.size(), 4);
     }
 
