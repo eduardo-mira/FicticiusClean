@@ -32,11 +32,11 @@ public class VehicleServiceImpl implements VehicleService {
     }
 
     public void validateVehicleInfo(VehicleInfo vehicleInfo) {
-        Assert.notNull(vehicleInfo.name, "Campo name não informado");
-        Assert.notNull(vehicleInfo.brand, "Campo brand não informado");
-        Assert.notNull(vehicleInfo.model, "Campo model não informado");
-        Assert.notNull(vehicleInfo.fabricationDate, "Campo fabricationDate não informado");
-        Assert.notNull(vehicleInfo.roadConsumption, "Campo roadConsumption não informado");
-        Assert.notNull(vehicleInfo.cityConsumption, "Campo cityConsumption não informado");
+        Assert.notNull(vehicleInfo.name, "Campo [name] não informado");
+        Assert.notNull(vehicleInfo.brand, "Campo [brand] não informado");
+        Assert.notNull(vehicleInfo.model, "Campo [model] não informado");
+        Assert.notNull(vehicleInfo.fabricationDate, "Campo [fabricationDate] não informado");
+        Assert.notNull(vehicleInfo.roadConsumption, "Campo [roadConsumption] não informado");
+        Assert.notNull(vehicleInfo.cityConsumption, "Campo [cityConsumption] não informado");
     }
 }
